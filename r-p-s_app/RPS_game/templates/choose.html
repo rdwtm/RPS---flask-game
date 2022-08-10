@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  <title>Wybierz | Papier kamień i nożyce</title>
+  
+{% endblock %}
+
+{% block content %}
+  <h2>Gracz nr:  {{ user }}</h2>
+  <form action="/game" method="POST">
+
+    <label>Wybierz jedną z opcji:</label>
+    <select name="choice">
+      <option value="rock">Kamień</option>
+      <option value="paper">Papier</option>
+      <option value="scissors">Nożyce</option>
+    </select>
+
+    <button onClick="game()">Zatwierdź</button>
+
+    <h2>Dane gry</h2>
+    <p>kredyty: {{ credits }}</p>
+
+  </form>
+{% endblock %}

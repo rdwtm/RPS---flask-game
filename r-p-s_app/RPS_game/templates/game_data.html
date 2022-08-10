@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>DB | Papier kamień i nożyce</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Start</h2>
+
+  <h1 align="center">Historia gier</h1>
+
+  <form method="POST">
+    <h3 align="center">Wybierz datę</h3>
+    <div class="form-group">
+      <label for="date"> </label>
+      <input
+        type="date"
+        class="form-control"
+        id="date"
+        name="date"
+        placeholder="data"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Zatwierdź</button>
+  </form>
+  <style>
+ 
+    td {
+           width: 150px;
+           text-align: center;
+           border: 1px solid black;
+           padding: 5px;
+         }
+         
+   </style>
+   <table align="center">
+     <thead>
+       <tr>
+           <th>Nr.</th>
+           <th>Gracz</th>
+           <th>Wynik</th>
+           <th>Liczba punktów przed rozgrywką</th>
+           <th>data rozgrywki</th>
+       </tr>
+       </thead>    
+       <tbody>
+        {% for id in query %}    
+               <tr>
+                   <td>{{id.id}}</td>
+                   <td>{{id.gamer}}</td>
+                   <td>{{id.result}}</td>
+                   <td>{{id.nb_cr}}</td>
+                   <td>{{id.date}}</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   <button type="button" onclick="window.location.href='{{ url_for( 'game_routes.game') }}';">Wróć</button>
+
+{% endblock %}

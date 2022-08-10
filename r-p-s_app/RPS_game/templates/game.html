@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  <title>Gra | Papier kamień i nożyce</title>
+  
+{% endblock %}
+
+{% block content %}
+  <h2>Gracz nr:  {{ user }}</h2>
+  <form action="/game" method="POST">
+
+    <label>Wybierz jedną z opcji:</label>
+    <select name="choice">
+      <option value="rock">Kamień</option>
+      <option value="paper">Papier</option>
+      <option value="scissors">Nożyce</option>
+    </select>
+
+    <button onClick="game()">Zatwierdź</button>
+
+    <h2>Dane gry</h2>
+    {% if have_credits %}
+      <p>Gracz wybrał: {{ user_choice }}</p>
+      <p>Komputer wybrał: {{ computer_choice }}</p>
+      <p>Wynik: {{ results_message }}</p>
+      <p>Kredyty: {{ credits }}</p>
+    {% else %}
+      <p>Kredyty: {{ credits }}</p>
+      <button type="button" onclick="window.location.href='{{ url_for( 'game_routes.add_cr') }}';">Dodaj kredyty</button>
+    {% endif %}
+    <button type="button" onclick="window.location.href='{{ url_for( 'game_routes.game_data') }}';">HIstoria gier</button>
+
+  </form>
+
+{% endblock %}
